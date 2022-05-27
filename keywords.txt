@@ -1,5 +1,5 @@
 #######################################
-# Syntax Coloring Map For Grove - DFRobot_I2CMultiplexer
+# Syntax Coloring Map For Grove - DFRobot_I2C_Multiplexer
 #######################################
 
 #######################################

@@ -73,7 +73,7 @@ To use this library, first download the library to ESP32 using UPY, then open th
 
 ## History
 
-- 2022/3/23 - 1.0.0 Version
+- 2022/3/23 - 1.0.1 Version
 
 ## Credits
 

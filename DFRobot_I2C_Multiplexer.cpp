@@ -15,6 +15,11 @@ DFRobot_I2C_Multiplexer::DFRobot_I2C_Multiplexer(TwoWire *pWire, uint8_t addr)
 {
   _pWire=pWire;
   _I2CMultiplexer_addr = addr;
+ 
+}
+
+void DFRobot_I2C_Multiplexer::begin(void)
+{
   _pWire->begin();
 }
 

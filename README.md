@@ -85,7 +85,7 @@ M0  |      √       |              |             |
 
 ## History
 
-- 2022/3/23 - 1.0.0 Version
+- 2022/3/23 - 1.0.1 Version
 
 ## Credits
 

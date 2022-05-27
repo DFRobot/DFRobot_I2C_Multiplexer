@@ -26,6 +26,7 @@ DFRobot_I2C_Multiplexer I2CMultiplexer(&Wire, 0x70);
 
 void setup(){
   Serial.begin(9600);
+  I2CMultiplexer.begin();
   delay(1000);
   Serial.println("Scan ready!");
 

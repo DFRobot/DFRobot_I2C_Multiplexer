@@ -36,6 +36,7 @@ uint8_t reg = 0;
 void setup()
 {
   Serial.begin(9600);
+  I2CMultiplexer.begin();
 }
 
 void loop()

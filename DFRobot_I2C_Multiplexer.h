@@ -21,6 +21,12 @@ public:
   DFRobot_I2C_Multiplexer(TwoWire *pWire, uint8_t addr);
 
   /**
+   * @fn begin
+   * @brief IIC initialize
+   */
+  void begin(void);
+
+  /**
    * @fn scan
    * @brief Scan all I2C devices connected to the I2C cascade module
    * @param port   Specify the port for scanning

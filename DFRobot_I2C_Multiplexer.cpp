@@ -4,8 +4,9 @@
  * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @license     The MIT License (MIT)
  * @author      PengKaixing(kaixing.peng@dfrobot.com)
- * @version  V1.0.0
- * @date  2022-03-23
+ * @maintainer  [qsjhyy](yihuan.huang@dfrobot.com)
+ * @version  V1.0
+ * @date  2022-12-06
  * @url https://github.com/DFRobot/DFRobot_I2C_Multiplexer
  */
 
@@ -47,38 +48,39 @@ uint8_t *DFRobot_I2C_Multiplexer::scan(uint8_t port)
 
 void DFRobot_I2C_Multiplexer::selectPort(uint8_t port)
 {
-  if (port > 7) 
+  // To prevent multiple expansion modules from colliding, add a parameter to close all channels
+  if (port > 8)
     return;
   Wire.beginTransmission(_I2CMultiplexer_addr);
-  Wire.write(1 << port);
+  Wire.write((1 << port) & 0xFF);
   Wire.endTransmission();
 }
 
 void DFRobot_I2C_Multiplexer::write(uint8_t port,uint8_t addr, uint8_t reg,uint8_t* buf, uint8_t len)
 {
   selectPort(port);
-  Wire.beginTransmission(addr); 
-  Wire.write(reg);              
+  Wire.beginTransmission(addr);
+  Wire.write(reg);
   uint8_t i = 0;
   for(i = 0; i < len; i++)
   {
-    Wire.write(*buf); 
+    Wire.write(*buf);
     buf++;
   }
-  Wire.endTransmission();    
+  Wire.endTransmission();
 }
 
 uint8_t DFRobot_I2C_Multiplexer::read(uint8_t port,uint8_t addr,uint8_t reg,uint8_t* data, uint8_t len)
 {
   selectPort(port);
   int i = 0;
-  Wire.beginTransmission(addr); 
-  Wire.write(reg); 
-  Wire.endTransmission(); 
+  Wire.beginTransmission(addr);
+  Wire.write(reg);
+  Wire.endTransmission();
   Wire.requestFrom(addr, len);
-  while (Wire.available())   
+  while (Wire.available())
   {
-    data[i++] = Wire.read(); 
+    data[i++] = Wire.read();                           
   }
   return i;
 }

@@ -25,7 +25,10 @@ I2C级联模块支持库
 
 ## 库安装
 
-使用此库前，请首先下载库文件，将其粘贴到\Arduino\libraries目录中，然后打开examples文件夹并在该文件夹中运行演示。
+这里有2种安装方法：
+
+1. 使用此库前，请首先下载库文件，将其粘贴到\Arduino\libraries目录中，然后打开examples文件夹并在该文件夹中运行演示。
+2. 直接在Arduino软件库管理中搜索下载 DFRobot_I2C_Multiplexer 库。
 
 ## 方法
 
@@ -41,8 +44,13 @@ I2C级联模块支持库
 
   /**
    * @fn selectPort
-   * @brief 指定I2C级联模块的通道
-   * @param port 通道选择
+   * @brief 开启指定I2C级联模块的通道, 或关闭级联模块的所有通道
+   * @param port - 通道选择, 范围: 0 ~ 8, 
+   * @n 0-7 分别代表对应的通道单独打开, 传入 8 相当于关闭所有通道.
+   * @note 在同一i2c总线上使用"多个级联模块"连接"i2c地址相同的传感器"时, 为了防止冲突, 
+   * @n 需确保"正在使用的通道"是在"所有级联模块的所有通道"中, 属于唯一启用的.
+   * @n 例如, 第一个级联模块的通道之一启用后, 若要使用第二个级联模块的通道时, 
+   * @n 需确保第一个级联模块的全部通道处于关闭状态.
    */
   void selectPort(uint8_t port);
 
@@ -85,8 +93,9 @@ M0  |      √       |              |             |
 
 ## 历史
 
-- 2022/3/23 - 1.0.1 版本
+- 2022/03/23 - 1.0.1 版本
+- 2022/12/06 - 1.0.2 版本
 
 ## 创作者
 
-Written by PengKaixing(kaixing.peng@dfrobot.com), 2021. (Welcome to our [website](https://www.dfrobot.com/))
+Written by PengKaixing(kaixing.peng@dfrobot.com), 2022. (Welcome to our [website](https://www.dfrobot.com/))

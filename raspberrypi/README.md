@@ -39,8 +39,13 @@ To use the library, first download it to Raspberry Pi, then open the routines fo
     def scan(self,port):
 
     '''!
-      @brief Specify the port of the I2C cascade module
-      @param port  Select port
+      @brief Enable a specific channel on the I2C multiplexer or disable all channels
+      @param port - Select channel, range: 0 - 8
+      @n 0-7 for enabling the corresponding channel separately, 8 for disabling all channels 
+      @note When“multiple multiplexer modules” are used on one I2C bus to connect “sensors with same I2C address”, to avoid conflicts,  
+      @n it is necessary to ensure that “the currently used channel”is the only enabled one among “all channels in all multiplexers” 
+      @n For instance, when one of the channels in the first multiplexer is enabled, in order to use any channel in the second multiplexer,  
+      @n please make sure that the channels in the first multiplexer are all disabled.
     '''   
     def select_port(self,port):
 
@@ -82,8 +87,9 @@ To use the library, first download it to Raspberry Pi, then open the routines fo
 
 ## History
 
-- 2022/3/23 - 1.0.1 Version
+- 2022/03/23 - 1.0.1 Version
+- 2022/12/06 - 1.0.2 Version
 
 ## Credits
 
-Written by PengKaixing(kaixing.peng@dfrobot.com), 2021. (Welcome to our [website](https://www.dfrobot.com/))
+Written by PengKaixing(kaixing.peng@dfrobot.com), 2022. (Welcome to our [website](https://www.dfrobot.com/))

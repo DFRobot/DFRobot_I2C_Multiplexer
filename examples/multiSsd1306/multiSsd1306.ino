@@ -33,7 +33,7 @@ DFRobot_SSD1306_I2C OLED(0x3c);
 DFRobot_I2C_Multiplexer I2CMulti(&Wire, 0x70);
 
 void setup(void){
-  I2CMultiplexer.begin();
+  I2CMulti.begin();
   /*Let the OLED on port 0 display characters*/
   /**
    * @brief Enable a specific channel on the I2C multiplexer or disable all channels
